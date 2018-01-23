@@ -20,6 +20,7 @@ contract TCRToken is StandardToken, BurnableToken, Ownable {
     string  public constant name = "Transboundary Credit Rating";
     string  public constant symbol = "TCR";
     uint8   public constant decimals = 18;
+    string  public constant website = "www.tcr.legal"; 
     uint256 public constant INITIAL_SUPPLY      =  28000000 * (10 ** uint256(decimals));
     uint256 public constant CROWDSALE_ALLOWANCE =  21840000  * (10 ** uint256(decimals));
     uint256 public constant ADMIN_ALLOWANCE     =   6160000 * (10 ** uint256(decimals));
