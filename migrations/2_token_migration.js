@@ -11,7 +11,7 @@ module.exports = function(deployer, network, accounts) {
     //const admin = '0x9A264e803f69EfeB1539F09f2fF0391C4b57F3a4';
     const admin = '0xfdb0d9aca9f30d98d8bcbd54c596e764f6254fdc';
     const fundingMin = 1; // In Ether
-    const fundingCap = 2800; // 28,000,000 tokens / 10,000 rate = 2800 Ether
+    const fundingCap = 10000; // In Ether
     const minContribution = 0.01 * Math.pow(10, 18);
     const rate = 10000;
     // Testing Dates

@@ -21,16 +21,17 @@ contract TCRToken is StandardToken, BurnableToken, Ownable {
     string  public constant symbol = "TCR";
     uint8   public constant decimals = 18;
     string  public constant website = "www.tcr.legal"; 
-    uint256 public constant INITIAL_SUPPLY      =  28000000 * (10 ** uint256(decimals));
-    uint256 public constant CROWDSALE_ALLOWANCE =  21840000  * (10 ** uint256(decimals));
-    uint256 public constant ADMIN_ALLOWANCE     =   6160000 * (10 ** uint256(decimals));
+    uint256 public constant INITIAL_SUPPLY      =  280000000 * (10 ** uint256(decimals));
+    uint256 public constant CROWDSALE_ALLOWANCE =  218400000 * (10 ** uint256(decimals));
+    uint256 public constant ADMIN_ALLOWANCE     =   61600000 * (10 ** uint256(decimals));
 
     // Properties
     uint256 public crowdSaleAllowance;      // the number of tokens available for crowdsales
     uint256 public adminAllowance;          // the number of tokens available for the administrator
     address public crowdSaleAddr;           // the address of a crowdsale currently selling this token
     address public adminAddr;               // the address of a crowdsale currently selling this token
-    bool    public transferEnabled = false; // indicates if transferring tokens is enabled or not
+    //bool    public transferEnabled = false; // indicates if transferring tokens is enabled or not
+    bool    public transferEnabled = true;  // Enables everyone to transfer tokens 
 
     // Modifiers
     modifier onlyWhenTransferEnabled() {
@@ -97,7 +98,7 @@ contract TCRToken is StandardToken, BurnableToken, Ownable {
      * @param _amountForSale The supply of tokens provided to the crowdsale
      */
     function setCrowdsale(address _crowdSaleAddr, uint256 _amountForSale) external onlyOwner {
-        require(!transferEnabled);
+        //require(!transferEnabled);
         require(_amountForSale <= crowdSaleAllowance);
 
         // if 0, then full available crowdsale supply is assumed
@@ -115,13 +116,13 @@ contract TCRToken is StandardToken, BurnableToken, Ownable {
      * only be called by the token owner. Once enabled, it is not
      * possible to disable transfers.
      */
-    function enableTransfer() external onlyOwner {
+    /*function enableTransfer() external onlyOwner {
         transferEnabled = true;
         approve(crowdSaleAddr, 0);
         approve(adminAddr, 0);
         crowdSaleAllowance = 0;
         adminAllowance = 0;
-    }
+    }*/
 
     /**
      * Overrides ERC20 transfer function with modifier that prevents the
